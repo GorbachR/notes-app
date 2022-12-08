@@ -1,3 +1,19 @@
+import { useParams } from "react-router-dom";
+
 export default function Home() {
-  return <div>Home</div>;
+  const params = useParams();
+  console.log(params);
+
+  return (
+    <div className="flex-auto">
+      <div className="max-w-prose px-8 mx-auto">
+        <h2 className="mt-32">Note Title</h2>
+        <p className="mt-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci consequatur quo
+          inventore recusandae magnam nemo esse eius consequuntur cumque ullam et nam odio eos
+          facere numquam, exercitationem ipsa, a nulla?
+        </p>
+      </div>
+    </div>
+  );
 }

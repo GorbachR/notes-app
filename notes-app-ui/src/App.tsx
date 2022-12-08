@@ -1,24 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
-import Header from "./Components/Header/Header";
+import NoteLayout from "./Components/NoteLayout/NoteLayout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const client = new QueryClient();
   return (
-    <>
+    <QueryClientProvider client={client}>
       <Routes>
-        <Header />
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/note" element={<NoteLayout />}>
+          <Route index element={<Navigate to="/note/1" />} />
+          <Route path=":id" element={<Home />} />
+        </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </>
+    </QueryClientProvider>
   );
 }
 
