@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
+import useGetNotes from "../../hooks/useGetNotes";
 
 export default function Home() {
   const params = useParams();
+  const { data } = useGetNotes();
   console.log(params);
 
   return (

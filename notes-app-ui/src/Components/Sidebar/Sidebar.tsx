@@ -5,7 +5,7 @@ interface ISidebar {
 }
 
 export default function Sidebar({ sideBarStatus }: ISidebar) {
-  const visibleStyle = "w-80 opacity-100 p-4";
+  const visibleStyle = "w-80 opacity-100 p-4 flex-none";
   const collapsedStyle = "w-0 opacity-0";
   const { data: notesData } = useGetNotes();
 
